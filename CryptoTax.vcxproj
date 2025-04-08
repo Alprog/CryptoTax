@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +129,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="html.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="transaction_reader.cpp" />
+    <ClCompile Include="transaction_type.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="html.hpp" />
+    <ClInclude Include="transaction.h" />
+    <ClInclude Include="transaction_reader.h" />
+    <ClInclude Include="transaction_type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
