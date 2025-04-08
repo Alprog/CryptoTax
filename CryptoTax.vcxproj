@@ -135,6 +135,7 @@
     <ClCompile Include="transaction_type.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asset.h" />
     <ClInclude Include="html.hpp" />
     <ClInclude Include="transaction.h" />
     <ClInclude Include="transaction_reader.h" />

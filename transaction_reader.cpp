@@ -61,10 +61,36 @@ void TransactionReader::ParseWell(html::node* well)
 
     auto middleColumn = well->at(1);
     auto subColumns = middleColumn->select("div.media-body");
-    auto srcColumn = subColumns.at(0);
-    auto dstColumn = subColumns.at(1);
+    transaction.source = ParseAsset(subColumns.at(0));
+    transaction.destination = ParseAsset(subColumns.at(1));
+}
 
+Asset TransactionReader::ParseAsset(html::node* div)
+{
+    Asset asset;
 
-    std::string sum = dstColumn->select("span.pe-auto")[0]->to_text();
+    if (div->size() > 0)
+    {
+        asset.wallet = div->at(0)->to_text();
+    }
 
+    if (div->size() > 2)
+    {
+        asset.currency = div->at(1)->to_text();
+    }
+
+    //auto selected = div->select("div.mb-1");
+
+    //if (selected.size() > 0)
+    //{
+    //    asset.wallet = selected.at(0)->to_text();
+    //}
+    //else
+    //{
+    //    asset.wallet = "X";
+    //}
+    
+    return asset;
+
+    // std::string sum = dstColumn->select("span.pe-auto")[0]->to_text();
 }

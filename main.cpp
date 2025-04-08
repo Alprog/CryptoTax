@@ -20,7 +20,13 @@ int main()
     for (auto transaction : transactions)
     {
         std::cout << i++ << " ";
-        std::cout << ToString(transaction.type) << std::endl;
+        std::cout << ToString(transaction.type) << " ";
+
+        std::cout << transaction.source.wallet << " -> " << transaction.destination.wallet;
+            
+        std::cout << transaction.source.currency << " ";
+
+        std::cout << std::endl;
     }
 
     return 0;

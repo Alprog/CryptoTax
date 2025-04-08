@@ -41,5 +41,8 @@
     <ClInclude Include="transaction_type.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="asset.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
