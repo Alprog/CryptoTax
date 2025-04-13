@@ -27,6 +27,9 @@
     <ClCompile Include="transaction_type.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="html.hpp">
@@ -41,7 +44,13 @@
     <ClInclude Include="transaction_type.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="asset.h">
+    <ClInclude Include="transaction_asset.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monetary_value.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

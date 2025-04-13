@@ -7,8 +7,6 @@ namespace html
     class node;
 }
 
-class Asset;
-
 class TransactionReader
 {
 public:
@@ -21,8 +19,10 @@ private:
     void ParseWellList(html::node* wellList);
     void ParseDateHeader(html::node* dateHeader);
     void ParseWell(html::node* well);
-    Asset ParseAsset(html::node* div);
+    TransactionAsset ParseTransactionAsset(html::node* div);
+    MonetaryValue ParseMonetaryValues(std::string divText);
 
 private:
     std::vector<Transaction> transactions;
+    std::chrono::sys_days current_date;
 };
