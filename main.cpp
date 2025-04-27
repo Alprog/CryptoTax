@@ -2,6 +2,7 @@
 #include "html.hpp"
 
 #include "transaction_reader.h"
+#include "savings.h"
 
 import std;
 
@@ -14,17 +15,26 @@ int main()
         reader.ParseHtmlFile(path);
     }
 
-    auto& transactions = reader.GetTransactions();
-    int i = 1;
-    for (auto transaction : transactions)
-    {
-        std::cout << i++ << " ";
-        std::cout << ToString(transaction.type) << " " << std::endl;
-        std::cout << "   " << transaction.time_point << std::endl;
-        std::cout << "   " << transaction.source.wallet << " -> " << transaction.destination.wallet << std::endl;
-        std::cout << "   " << transaction.source.coinValue << " -> " << transaction.destination.coinValue << std::endl;
-        std::cout << "   " << transaction.source.sekEquivalent << " -> " << transaction.destination.sekEquivalent << std::endl;
-    }
 
+    Savings savings;
+    int i = 0;    
+    for (auto& transaction : reader.GetTransactions())
+    {
+        transaction.Print();
+        std::cout << std::endl;
+        auto gain = savings.Perform(transaction);
+        if (gain.amount != 0)
+        {
+            std::cout << "                                               " << gain << std::endl;
+        }
+
+        savings.PrintBalance();
+
+        std::cout << "\n-------------------------------------------------\n\n";
+    }
+    
+    //system("cls");
+
+    
     return 0;
 }

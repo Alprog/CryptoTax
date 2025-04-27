@@ -6,7 +6,7 @@ import std;
 
 struct TransactionAsset
 {
-    std::string wallet = "*";
+    std::string walletName = "*";
     MonetaryValue coinValue;
     MonetaryValue sekEquivalent;
 };

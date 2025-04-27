@@ -21,6 +21,7 @@ private:
     void ParseWell(html::node* well);
     TransactionAsset ParseTransactionAsset(html::node* div);
     MonetaryValue ParseMonetaryValues(std::string divText);
+    float ParseFeePercent(html::node* div);
 
 private:
     std::vector<Transaction> transactions;

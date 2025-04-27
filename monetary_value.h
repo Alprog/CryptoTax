@@ -7,16 +7,9 @@ struct MonetaryValue
     float amount = 0;
     std::string currency;
 
-    friend std::ostream& operator<<(std::ostream& os, const MonetaryValue& value) 
-    {
-        if (value.currency.empty())
-        {
-            os << "*";
-        }
-        else
-        {
-            os << value.amount << " " << value.currency;
-        }
-        return os;
-    }
+    void operator+=(const MonetaryValue& adding);
+    void operator-=(const MonetaryValue& subtracting);
+
+    friend MonetaryValue operator-(const MonetaryValue& lhs, const MonetaryValue& rhs);
+    friend std::ostream& operator<<(std::ostream& os, const MonetaryValue& value);
 };

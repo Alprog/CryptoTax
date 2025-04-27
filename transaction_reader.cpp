@@ -58,7 +58,7 @@ void TransactionReader::ParseDateHeader(html::node* dateHeader)
 
 void TransactionReader::ParseWell(html::node* well)
 {
-    auto& transaction = transactions.emplace_back();
+    auto& transaction = transactions.emplace_back(transactions.size() + 1);
 
     auto leftColumn = well->at(0);   
     transaction.type = ParseTransactionType( leftColumn->select("div.txn-tag")[0]->to_text() );
@@ -74,6 +74,10 @@ void TransactionReader::ParseWell(html::node* well)
     auto subColumns = middleColumn->select("div.media-body");
     transaction.source = ParseTransactionAsset(subColumns.at(0));
     transaction.destination = ParseTransactionAsset(subColumns.at(1));
+
+    auto rightColumn = well->at(2);
+    //std::cout << rightColumn->to_text() << std::endl;
+    transaction.feePercent = ParseFeePercent(rightColumn);
 }
 
 TransactionAsset TransactionReader::ParseTransactionAsset(html::node* div)
@@ -94,7 +98,7 @@ TransactionAsset TransactionReader::ParseTransactionAsset(html::node* div)
         }
         else
         {
-            asset.wallet = rows[0];
+            asset.walletName = rows[0];
         }
     }
 
@@ -139,4 +143,20 @@ MonetaryValue TransactionReader::ParseMonetaryValues(std::string divText)
     result.currency = divText.substr(startIndex, size);
 
     return result;
+}
+
+float TransactionReader::ParseFeePercent(html::node* div)
+{
+    auto badges = div->select("div.badge");
+    for (auto& badge : badges)
+    {
+        auto text = badge->to_text();
+        if (text.contains("% fee"))
+        {
+            replace(text, "&lt; ", "");
+            return std::stof(text);
+        }
+    }
+
+    return 0.0;
 }

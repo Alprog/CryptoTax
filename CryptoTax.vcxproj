@@ -129,13 +129,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="asset.cpp" />
     <ClCompile Include="html.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monetary_value.cpp" />
+    <ClCompile Include="savings.cpp" />
+    <ClCompile Include="transaction.cpp" />
     <ClCompile Include="transaction_reader.cpp" />
     <ClCompile Include="transaction_type.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asset.h" />
+    <ClInclude Include="savings.h" />
     <ClInclude Include="transaction_asset.h" />
     <ClInclude Include="html.hpp" />
     <ClInclude Include="monetary_value.h" />
@@ -143,6 +150,7 @@
     <ClInclude Include="transaction_reader.h" />
     <ClInclude Include="transaction_type.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="wallet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,6 +30,21 @@
     <ClCompile Include="utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="savings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monetary_value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="html.hpp">
@@ -51,6 +66,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="savings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asset.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wallet.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
