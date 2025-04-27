@@ -28,6 +28,7 @@ int main()
             std::cout << "                                               " << gain << std::endl;
         }
 
+        savings.RecalculateAverages();
         savings.PrintBalance();
 
         std::cout << "\n-------------------------------------------------\n\n";

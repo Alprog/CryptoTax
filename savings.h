@@ -14,6 +14,7 @@ public:
     Wallet& GetWallet(std::string name);
 
     MonetaryValue Perform(Transaction& transaction);
+    void RecalculateAverages();
     void PrintBalance();
 
 private:

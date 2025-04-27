@@ -11,6 +11,7 @@ public:
 
     std::string GetName() const;
     Asset& GetAsset(std::string currency);
+    std::vector<Asset>& GetAssets();
     void PrintBalance() const;
     bool IsEmpty() const;
 

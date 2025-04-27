@@ -23,6 +23,11 @@ Asset& Wallet::GetAsset(std::string currency)
     return assets.emplace_back(currency);
 }
 
+std::vector<Asset>& Wallet::GetAssets()
+{
+    return assets;
+}
+
 void Wallet::PrintBalance() const
 {
     std::cout << "Wallet: " << name << std::endl;

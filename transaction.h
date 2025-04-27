@@ -21,6 +21,5 @@ struct Transaction
     float feePercent;
 
     MonetaryValue GetSourceFeeValue() const;
-    MonetaryValue GetFeeSekValue() const;
     void Print();
 };

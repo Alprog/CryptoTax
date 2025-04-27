@@ -134,6 +134,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monetary_value.cpp" />
     <ClCompile Include="savings.cpp" />
+    <ClCompile Include="tax_year.cpp" />
+    <ClCompile Include="trade_record.cpp" />
     <ClCompile Include="transaction.cpp" />
     <ClCompile Include="transaction_reader.cpp" />
     <ClCompile Include="transaction_type.cpp" />
@@ -143,6 +145,10 @@
   <ItemGroup>
     <ClInclude Include="asset.h" />
     <ClInclude Include="savings.h" />
+    <ClInclude Include="tax_report.h" />
+    <ClInclude Include="trade_record.h" />
+    <ClInclude Include="deal_type.h" />
+    <ClInclude Include="tax_year.h" />
     <ClInclude Include="transaction_asset.h" />
     <ClInclude Include="html.hpp" />
     <ClInclude Include="monetary_value.h" />

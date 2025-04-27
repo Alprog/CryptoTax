@@ -8,6 +8,11 @@ Asset::Asset(std::string currency)
     sekEquivalent = { 0, "SEK" };
 }
 
+std::string Asset::GetCurrency() const
+{
+    return coinValue.currency;
+}
+
 void Asset::operator+=(const TransactionAsset& income)
 {
     coinValue += income.coinValue;
@@ -40,4 +45,9 @@ MonetaryValue Asset::spend(const TransactionAsset& spending)
 double Asset::getAverageSekValue() const
 {
     return sekEquivalent.amount / coinValue.amount;
+}
+
+void Asset::SetAverageSekValue(double averageSekValue)
+{
+    sekEquivalent.amount = coinValue.amount * averageSekValue;
 }

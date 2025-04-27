@@ -54,13 +54,40 @@ MonetaryValue Savings::Perform(Transaction& transaction)
         return {};
     }
 
-    if (transaction.type == TransactionType::Sell)
+    if (transaction.type == TransactionType::Sell || transaction.type == TransactionType::Exchange)
     {
         auto cost = srcAsset.spend(lhs);
         dstAsset += rhs;
 
         auto gain = rhs.sekEquivalent - cost;
         return gain;
+    }
+
+    if (transaction.type == TransactionType::Send)
+    {
+        auto cost = srcAsset.spend(lhs);
+        auto gain = rhs.sekEquivalent - cost;
+        return gain;
+    }
+
+    if (transaction.type == TransactionType::Transfer)
+    {
+        double averageSekValue = srcAsset.getAverageSekValue();
+
+        auto cost = srcAsset.spend(lhs);
+        
+        dstAsset.coinValue += rhs.coinValue;
+        
+        auto receiveSekAmount = rhs.coinValue.amount * averageSekValue;
+        dstAsset.sekEquivalent += MonetaryValue(receiveSekAmount, "SEK");
+
+        return {};
+    }
+
+    if (transaction.type == TransactionType::Withdrawal)
+    {
+        srcAsset -= lhs;
+        return {};
     }
 
     if (lhs.coinValue.amount > 0)
@@ -70,9 +97,7 @@ MonetaryValue Savings::Perform(Transaction& transaction)
 
     switch (transaction.type)
     {
-    case TransactionType::Send:
     case TransactionType::Cost:
-    case TransactionType::Withdrawal:
         return {};
     }
 
@@ -82,6 +107,34 @@ MonetaryValue Savings::Perform(Transaction& transaction)
     }   
 
     return {};
+}
+
+void Savings::RecalculateAverages()
+{
+    Wallet globalWallet("global");
+    for (auto& wallet : wallets)
+    {
+        for (auto& asset : wallet.GetAssets())
+        {
+            if (asset.coinValue.amount != 0)
+            {
+                globalWallet.GetAsset(asset.GetCurrency()).coinValue += asset.coinValue;
+                globalWallet.GetAsset(asset.GetCurrency()).sekEquivalent += asset.sekEquivalent;
+            }
+        }
+    }
+    
+    for (auto& wallet : wallets)
+    {
+        for (auto& asset : wallet.GetAssets())
+        {
+            if (asset.coinValue.amount != 0)
+            {
+                auto sekAverage = globalWallet.GetAsset(asset.GetCurrency()).getAverageSekValue();
+                asset.SetAverageSekValue(sekAverage);
+            }
+        }
+    }
 }
 
 void Savings::PrintBalance()

@@ -12,13 +12,6 @@ MonetaryValue Transaction::GetSourceFeeValue() const
     return value;
 }
 
-MonetaryValue Transaction::GetFeeSekValue() const
-{
-    auto value = destination.sekEquivalent;
-    value.amount = value.amount * feePercent / 100;
-    return value;
-}
-
 void Transaction::Print()
 {
     std::cout << index << " ";

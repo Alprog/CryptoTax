@@ -45,6 +45,12 @@
     <ClCompile Include="transaction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tax_year.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trade_record.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="html.hpp">
@@ -75,6 +81,18 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="wallet.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tax_year.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trade_record.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="deal_type.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tax_report.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
