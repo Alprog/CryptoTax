@@ -25,3 +25,10 @@ void Transaction::Print()
         std::cout << "   fee: " << GetSourceFeeValue() << " (" << feePercent << "%)" << std::endl;
     }
 }
+
+int Transaction::getYear() const
+{
+    auto days = floor<std::chrono::days>(time_point);
+    std::chrono::year_month_day ymd{ days };
+    return (int)ymd.year();
+}

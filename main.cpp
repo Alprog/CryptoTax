@@ -21,7 +21,7 @@ int main()
     int i = 0;    
     for (auto& transaction : reader.GetTransactions())
     {
-        auto& taxYear = report.GetTaxYear(2024);
+        auto& taxYear = report.GetTaxYear(transaction.getYear());
 
         transaction.Print();
         std::cout << std::endl;

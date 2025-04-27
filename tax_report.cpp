@@ -17,5 +17,6 @@ void TaxReport::print()
     for (auto& taxYear : taxYears)
     {
         taxYear.print();
+        std::cout << std::endl;
     }
 }

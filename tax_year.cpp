@@ -44,7 +44,7 @@ void TaxYear::print()
         totalProfit += record.getProfit();
     }
 
-    std::cout << "total profit: " << totalProfit;
+    std::cout << "total profit: " << totalProfit << std::endl;
 }
 
 int TaxYear::getYear() const

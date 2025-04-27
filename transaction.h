@@ -22,4 +22,5 @@ struct Transaction
 
     MonetaryValue GetSourceFeeValue() const;
     void Print();
+    int getYear() const;
 };
