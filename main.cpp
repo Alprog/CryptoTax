@@ -3,6 +3,7 @@
 
 #include "transaction_reader.h"
 #include "savings.h"
+#include "tax_report.h"
 
 import std;
 
@@ -15,14 +16,16 @@ int main()
         reader.ParseHtmlFile(path);
     }
 
-
+    TaxReport report;
     Savings savings;
     int i = 0;    
     for (auto& transaction : reader.GetTransactions())
     {
+        auto& taxYear = report.GetTaxYear(2024);
+
         transaction.Print();
         std::cout << std::endl;
-        auto gain = savings.Perform(transaction);
+        auto gain = savings.Perform(transaction, taxYear);
         if (gain.amount != 0)
         {
             std::cout << "                                               " << gain << std::endl;
@@ -35,6 +38,8 @@ int main()
     }
     
     //system("cls");
+
+    report.print();
 
     
     return 0;

@@ -1,8 +1,22 @@
 #include "tax_year.h"
 
+#include "assert.h"
+
 TaxYear::TaxYear(int year)
     : year{ year }
 {
+}
+
+void TaxYear::report(const MonetaryValue coinValue, const MonetaryValue& sekCost, const MonetaryValue& sellValue)
+{
+    assert(coinValue.currency != "SEK");
+    assert(sekCost.currency == "SEK");
+    assert(sellValue.currency == "SEK");
+    TradeRecord record(coinValue.currency, coinValue.amount, sekCost.amount, sellValue.amount);
+    if (record.type != DealType::NoChange)
+    {
+        add(record);
+    }
 }
 
 void TaxYear::add(const TradeRecord& newRecord)

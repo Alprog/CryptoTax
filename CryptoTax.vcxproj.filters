@@ -51,6 +51,9 @@
     <ClCompile Include="trade_record.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tax_report.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="html.hpp">

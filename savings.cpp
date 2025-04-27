@@ -2,6 +2,7 @@
 
 #include "transaction.h"
 #include "assert.h"
+#include "tax_year.h"
 
 Savings::Savings()
 {
@@ -20,7 +21,7 @@ Wallet& Savings::GetWallet(std::string name)
     return wallets.emplace_back(name);
 }
 
-MonetaryValue Savings::Perform(Transaction& transaction)
+MonetaryValue Savings::Perform(Transaction& transaction, TaxYear& taxYear)
 {
     auto& lhs = transaction.source;
     auto& rhs = transaction.destination;
@@ -58,6 +59,7 @@ MonetaryValue Savings::Perform(Transaction& transaction)
     {
         auto cost = srcAsset.spend(lhs);
         dstAsset += rhs;
+        taxYear.report(lhs.coinValue, cost, rhs.sekEquivalent);
 
         auto gain = rhs.sekEquivalent - cost;
         return gain;
@@ -66,6 +68,8 @@ MonetaryValue Savings::Perform(Transaction& transaction)
     if (transaction.type == TransactionType::Send)
     {
         auto cost = srcAsset.spend(lhs);
+        taxYear.report(lhs.coinValue, cost, rhs.sekEquivalent);
+
         auto gain = rhs.sekEquivalent - cost;
         return gain;
     }

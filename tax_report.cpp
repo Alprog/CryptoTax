@@ -11,3 +11,11 @@ TaxYear& TaxReport::GetTaxYear(int year)
     }
     return taxYears.emplace_back(year);
 }
+
+void TaxReport::print()
+{
+    for (auto& taxYear : taxYears)
+    {
+        taxYear.print();
+    }
+}

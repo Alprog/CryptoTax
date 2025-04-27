@@ -5,6 +5,7 @@
 import std;
 
 struct Transaction;
+class TaxYear;
 
 class Savings
 {
@@ -13,7 +14,7 @@ public:
 
     Wallet& GetWallet(std::string name);
 
-    MonetaryValue Perform(Transaction& transaction);
+    MonetaryValue Perform(Transaction& transaction, TaxYear& taxYear);
     void RecalculateAverages();
     void PrintBalance();
 

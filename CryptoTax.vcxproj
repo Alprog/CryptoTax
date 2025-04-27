@@ -134,6 +134,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monetary_value.cpp" />
     <ClCompile Include="savings.cpp" />
+    <ClCompile Include="tax_report.cpp" />
     <ClCompile Include="tax_year.cpp" />
     <ClCompile Include="trade_record.cpp" />
     <ClCompile Include="transaction.cpp" />
